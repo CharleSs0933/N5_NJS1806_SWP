@@ -23,7 +23,7 @@ replace PROJECT to PROJECT KEY
  stage('Build') {
  steps {
  sh 'mvn clean test'
- }
+}
  post {
  always {
  junit 'target/surefire-reports/*.xml'
