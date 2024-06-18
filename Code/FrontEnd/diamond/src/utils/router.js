@@ -1,10 +1,11 @@
 export const ROUTERS = {
     USER: {
         LOGIN: "Login",
-        SIGNUP: "Signup",
+        SIGN: "Sign",
         HOME: "",
+        Manage: '/ManageAccount',
         CONTACT: "Contact",
-        SERVICE_CALCULATOR: "/Service/calculator",
+        CALCULATOR: "/calculator",
         SERVICE_VALUATION: "/Service/valuation",
         SERVICE_SCULPTURE: "/Service/sculpture",
         SERVICE_SALE: "/Service/sale",

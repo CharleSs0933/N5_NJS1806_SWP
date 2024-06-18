@@ -1,7 +1,8 @@
 import axios from "axios"
 
 export const api = axios.create({
-	baseURL: 'http://localhost:8081/DiamondShop',
+	// baseURL: 'http://localhost:8081/DiamondShop',
+	baseURL: 'https://6660044b5425580055b1c21d.mockapi.io/Assignment',
 	withCredentials: true
 })
 
@@ -9,7 +10,8 @@ export const api = axios.create({
 
 export async function loginUser(login) {
     try {
-        const response = await api.post("/api/login", login);
+        const response = await api.post("/User", login);
+        console.log(response)
         return response.data ;
     } catch (error) {
         if (error.response) {
