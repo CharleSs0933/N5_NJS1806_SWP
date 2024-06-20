@@ -1,14 +1,20 @@
-# Diamond Valuation System
+<h1 align="center">Diamond Valuation System</h1>
 
-## Hình ảnh Minh Họa:
-### Admin Page:
-![Admin Page](path-to-your-image.png)
+> The Diamond Valuation System is a comprehensive software platform designed to manage customer requests for diamond valuation. It provides tools for estimating diamond values, submitting valuation requests, and generating detailed valuation certificates. The system supports the entire valuation process, from initial customer contact to result delivery and handling unclaimed items. It integrates data from leading online jewelry platforms to ensure accurate pricing information and offers a user-friendly interface for both customers and staff.
 
-### Home Page:
-![Home Page](path-to-your-image.png)
+---
 
-## Các tính năng lớn:
-- **User Management**
+<h3>Illustrative images</h3>
+
+>### Admin Page:
+![Admin Page](https://github.com/CharleSs0933/N5_NJS1806_SWP/assets/169264938/4a6773e7-da34-4807-a179-a9a97e1e5d61)
+
+>### Home Page:
+![HomePage](https://github.com/CharleSs0933/N5_NJS1806_SWP/assets/169264938/dd4fa280-333e-4b90-9387-85bd6dbc7e35)
+
+---
+## Main Function:
+1. **User Management**
   - Login/Logout User
   - Manage Users
   - Manage Customers
@@ -18,17 +24,21 @@
   - Diamond Valuation Estimation 
   - Valuation Request Management 
 
-- **Customer Management**
+2. **Customer Management**
   - Login/Logout Customer
   - View Home page
   - Register Customer Account
 
-## Công nghệ áp dụng:
+<br/>
+
+## Technology application:
 - Spring Boot
 - React
 - MySQL 
 
-## Bảng phân công các thành viên:
+<br/>
+
+## Assign tasks:
 
 | Name                 | Task                    |
 |----------------------|-------------------------|
@@ -38,7 +48,8 @@
 | Trần Thế Khang       | Front-end Home Page     |
 | Võ Tấn Tài           | Backend                 |
 
-
+<br/>
+<h2>Sprint</h2>
 
 <table>
   <tr>
@@ -75,28 +86,31 @@
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-20?atlOrigin=eyJpIjoiZWY1MDAzZDBjMThjNDA3NmFmZGNlMDMyMzZiZmJmOGQiLCJwIjoiaiJ9">View Customer<a/>       </td>
-    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-35?atlOrigin=eyJpIjoiZjExOGU4MGJiMGNlNDIxZjg2ZTg5M2I4NjJlZmY1MDAiLCJwIjoiaiJ9">Create Diamond Certificate<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-35?atlOrigin=eyJpIjoiZjExOGU4MGJiMGNlNDIxZjg2ZTg5M2I4NjJlZmY1MDAiLCJwIjoiaiJ9">Create Diamond Certificate<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-21?atlOrigin=eyJpIjoiZGEwMmQ1ZjEwODU3NDY3NTgzZmYzNGI0ODBjNWQ4MGYiLCJwIjoiaiJ9">Create Customer<a/>       </td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-36?atlOrigin=eyJpIjoiMzg4ZWExMzQ5NWNkNDk5YWJlOGI3Y2Y0YzU4YmU3MDIiLCJwIjoiaiJ9">Edit Diamond Certificate<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-22?atlOrigin=eyJpIjoiNzMyM2IzZmY2M2NkNDEyNWI3MDdiZDY3NjU4YTFiODYiLCJwIjoiaiJ9">Edit Customer<a/></td>
-    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-36?atlOrigin=eyJpIjoiMzg4ZWExMzQ5NWNkNDk5YWJlOGI3Y2Y0YzU4YmU3MDIiLCJwIjoiaiJ9">Edit Diamond Certificate<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-37?atlOrigin=eyJpIjoiMGIxY2JjMjVmYjM3NGE2NTkwN2Q5Y2E3NTM5NWFiOWIiLCJwIjoiaiJ9">Print Diamond Certificate<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-23?atlOrigin=eyJpIjoiYzcxMGI1YWI5YTQzNDIwNDgzOGE2NTg5NzY5ZmZmNWQiLCJwIjoiaiJ9">Delete Customer<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-38?atlOrigin=eyJpIjoiNzcyMjI4NDA1N2QzNDg3MTlhY2E0ZTM5OGU4YzkzNzIiLCJwIjoiaiJ9">Delete Diamond Certificate<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-24?atlOrigin=eyJpIjoiNzZhMWUzNTZiMWI3NGRhNzlhOTA3OTEyNjk5Y2U0NmYiLCJwIjoiaiJ9">View Service<a/></td>
-    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-37?atlOrigin=eyJpIjoiMGIxY2JjMjVmYjM3NGE2NTkwN2Q5Y2E3NTM5NWFiOWIiLCJwIjoiaiJ9">Print Diamond Certificate<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Login<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Logout<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
-    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-38?atlOrigin=eyJpIjoiNzcyMjI4NDA1N2QzNDg3MTlhY2E0ZTM5OGU4YzkzNzIiLCJwIjoiaiJ9">Delete Diamond Certificate<a/></td>
+    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-70?atlOrigin=eyJpIjoiYTc2ZGE4MWRkZTg4NDAwMDk2NWVmYzAxNDZjNzQ1OTUiLCJwIjoiaiJ9">Register Customer Account<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-27?atlOrigin=eyJpIjoiMWZlYmE1YjIyMGJmNDI2ZWI3MTFmZDVhMmE4YzdkNDEiLCJwIjoiaiJ9">Delete Service<a/></td>
