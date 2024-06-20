@@ -53,13 +53,13 @@
 
 <table width="100vw">
   <tr>
-    <th rowspan="15">. Sprint 1 .</th>
+    <th rowspan="15"> Sprint 1 </th>
       <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-14?atlOrigin=eyJpIjoiZmM5OWM2ZDc1MzViNDZiNmJlZGZiNGM1YzM0MGFhMTAiLCJwIjoiaiJ9">User Login<a/></td>
-    <th rowspan="15" >. Sprint 2 .</th>
+    <th rowspan="15" >Sprint 2 </th>
       <td>
         <a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-28?atlOrigin=eyJpIjoiZWVlYWIzMGYyY2UwNDRkOGEwZjIwZTU2NmJmYTRhOTYiLCJwIjoiaiJ9">View Valuation Request<a/>
      </td>
-    <th rowspan="6"> . Sprint 3 .</th>
+    <th rowspan="6">  Sprint 3 </th>
     <td rowspan="3"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-42?atlOrigin=eyJpIjoiMGE0ZTgyMDU4OTQ2NDkwOWFlODA5YmY2MWFhMzQ0MWIiLCJwIjoiaiJ9">Estimate Diamond Value by Criteria</a></td>
   </tr>
   <tr>
@@ -86,7 +86,7 @@
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-19?atlOrigin=eyJpIjoiMTZjNGFlNzdjMTkzNDE4ZmI4MzE5NTU5OWI4Yjc2NWUiLCJwIjoiaiJ9">Delete User<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-34?atlOrigin=eyJpIjoiMDQyZjg2NjQ0MWY3NDBkNjkyY2Y0MzJjNTRjOWUyNjciLCJwIjoiaiJ9">View Diamond Certificate<a/></td>
-    <th rowspan="9"> . Sprint 4 .</th>
+    <th rowspan="9">  Sprint 4 </th>
     <td rowspan="3"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-44?atlOrigin=eyJpIjoiZjNhZWE2NDYxZDIxNGIxYzhhZTY2NTBmNDhlMzZlOTkiLCJwIjoiaiJ9">Submit Valuation Request</a></td>
   </tr>
   <tr>
