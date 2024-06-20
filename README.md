@@ -60,7 +60,7 @@
         <a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-28?atlOrigin=eyJpIjoiZWVlYWIzMGYyY2UwNDRkOGEwZjIwZTU2NmJmYTRhOTYiLCJwIjoiaiJ9">View Valuation Request<a/>
      </td>
     <th rowspan="6">  Sprint 3 </th>
-    <td rowspan="3"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-42?atlOrigin=eyJpIjoiMGE0ZTgyMDU4OTQ2NDkwOWFlODA5YmY2MWFhMzQ0MWIiLCJwIjoiaiJ9">Estimate Diamond Value by Criteria</a></td>
+    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-42?atlOrigin=eyJpIjoiMGE0ZTgyMDU4OTQ2NDkwOWFlODA5YmY2MWFhMzQ0MWIiLCJwIjoiaiJ9">Estimate Diamond Value by Criteria</a></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-15?atlOrigin=eyJpIjoiMDY0ZDE0ZWI5YjRlNGE2NThhNGYzMGFmOTBlMDFhNGQiLCJwIjoiaiJ9">User Logout<a/></td>
@@ -69,16 +69,16 @@
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-39?atlOrigin=eyJpIjoiNDMyYTIzZmQyZmZmNDZlNTgyYzJjYzMzNzljNGE0ODciLCJwIjoiaiJ9">View Home Page<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-30?atlOrigin=eyJpIjoiZjZjM2IzNzNlYzhiNDFlMGEwYWYwNjAyNDliOTMxODciLCJwIjoiaiJ9">Process Valuation Request<a/></td>
+    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-43?atlOrigin=eyJpIjoiODBkMGMzNTBiNDdkNDA2ODhlZGRmNTE2MmVjZDc1ZTciLCJwIjoiaiJ9">Estimate Diamond Value by Certification Number</a></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-16?atlOrigin=eyJpIjoiNTliYjlkZDBiNDkyNDkzZGE2NGM5OTJiMzA4Yzc1NTciLCJwIjoiaiJ9">View User<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-31?atlOrigin=eyJpIjoiNDE2MjlmNjE4ZjIzNGI0YjkyZmJiZWE4MjFhZjdhYTAiLCJwIjoiaiJ9">Update Valuation Request Status<a/></td>
-    <td rowspan="3"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-43?atlOrigin=eyJpIjoiODBkMGMzNTBiNDdkNDA2ODhlZGRmNTE2MmVjZDc1ZTciLCJwIjoiaiJ9">Estimate Diamond Value by Certification Number</a></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-17?atlOrigin=eyJpIjoiNjY5ZDYxN2M4ZWNhNGRmZmEzNDU2NTFhMTVmMjk1YTAiLCJwIjoiaiJ9">Create User<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-32?atlOrigin=eyJpIjoiNWU3MTkzZWZjY2E1NDgwY2IxMjU3ZGYzZjVjNTk1MDgiLCJwIjoiaiJ9">Aprrove Sealing Report<a/></td>
-  </tr>
+    <td rowspan="2"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-84?atlOrigin=eyJpIjoiMjQxNjE2ODJmM2I3NDVmYzk2Zjc2OTQ2NDAwZDU1ZjkiLCJwIjoiaiJ9">View Dashboard and Statistics</a></td></tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-18?atlOrigin=eyJpIjoiN2VjNjE0MTQwYjU4NDhiMmJlNjMzNTgxNTI5ZmJiNzIiLCJwIjoiaiJ9">Edit User<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-33?atlOrigin=eyJpIjoiMDc5M2NkNWU0ZTliNGJjN2JmZWJmMDdhYWE1N2MxODkiLCJwIjoiaiJ9">Approve Commitment Form<a/></td>
@@ -113,7 +113,7 @@
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Logout<a/></td>
-    <td rowspan="3"><a href="">Request Commitment Form for Lost Receipt [none]<a/></td>
+    <td rowspan="3"><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-86?atlOrigin=eyJpIjoiNTZmYmZmYzZjNjUzNDVkYzg3YTk2ZDM0NmQ2ZTJiYTgiLCJwIjoiaiJ9">Request Commitment Form for Lost Receipt<a/></td>
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
@@ -121,6 +121,6 @@
   </tr>
   <tr>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-27?atlOrigin=eyJpIjoiMWZlYmE1YjIyMGJmNDI2ZWI3MTFmZDVhMmE4YzdkNDEiLCJwIjoiaiJ9">Delete Service<a/></td>
-    <td><a href="">Edit Profile Customer [none]<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-83?atlOrigin=eyJpIjoiMDM2ZTAwMWE5NjQ1NGZkMjhmZmQ4YWNiNzZjY2NlODMiLCJwIjoiaiJ9">Edit Profile Customer<a/></td>
   </tr>
 </table>
