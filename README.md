@@ -100,20 +100,20 @@
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-38?atlOrigin=eyJpIjoiNzcyMjI4NDA1N2QzNDg3MTlhY2E0ZTM5OGU4YzkzNzIiLCJwIjoiaiJ9">Delete Diamond Certificate<a/></td>
   </tr>
   <tr>
-    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-24?atlOrigin=eyJpIjoiNzZhMWUzNTZiMWI3NGRhNzlhOTA3OTEyNjk5Y2U0NmYiLCJwIjoiaiJ9">View Service<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Login<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-24?atlOrigin=eyJpIjoiNzZhMWUzNTZiMWI3NGRhNzlhOTA3OTEyNjk5Y2U0NmYiLCJwIjoiaiJ9">View Service<a/></td>
   </tr>
   <tr>
-    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Logout<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
   </tr>
   <tr>
-    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-70?atlOrigin=eyJpIjoiYTc2ZGE4MWRkZTg4NDAwMDk2NWVmYzAxNDZjNzQ1OTUiLCJwIjoiaiJ9">Register Customer Account<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
   </tr>
   <tr>
-    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-27?atlOrigin=eyJpIjoiMWZlYmE1YjIyMGJmNDI2ZWI3MTFmZDVhMmE4YzdkNDEiLCJwIjoiaiJ9">Delete Service<a/></td>
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-83?atlOrigin=eyJpIjoiMDM2ZTAwMWE5NjQ1NGZkMjhmZmQ4YWNiNzZjY2NlODMiLCJwIjoiaiJ9">Edit Profile Customer<a/></td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-27?atlOrigin=eyJpIjoiMWZlYmE1YjIyMGJmNDI2ZWI3MTFmZDVhMmE4YzdkNDEiLCJwIjoiaiJ9">Delete Service<a/></td>
   </tr>
     <tr>
       <th rowspan="3">  Sprint 3 </th>
