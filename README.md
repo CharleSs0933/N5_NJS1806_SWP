@@ -137,47 +137,47 @@
   </tr>
   <tr>
     <td rowspan="2">Đỗ Minh Hiếu</td>
-    <td>Register Customer Account</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-70?atlOrigin=eyJpIjoiYTc2ZGE4MWRkZTg4NDAwMDk2NWVmYzAxNDZjNzQ1OTUiLCJwIjoiaiJ9">Register Customer Account<a/></td>
   </tr>
   <tr>
-    <td>Edit Profile Customer</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-83?atlOrigin=eyJpIjoiMDM2ZTAwMWE5NjQ1NGZkMjhmZmQ4YWNiNzZjY2NlODMiLCJwIjoiaiJ9">Edit Profile Customer<a/></td>
   </tr>
   <tr>
     <td rowspan="2">Trần Thế Khang</td>
-    <td>Customer Login</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Login<a/></td>
   </tr>
   <tr>
-    <td>Customer Logout</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-40?atlOrigin=eyJpIjoiNDIxYmRhMWY2M2IzNGZhNmI1MzFjMGYyNjU2ZjExYjgiLCJwIjoiaiJ9">Customer Logout<a/></td>
   </tr>
   <tr>
     <td rowspan="3">Nguyễn Kiều Anh Quân</td>
-    <td>Create User</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-17?atlOrigin=eyJpIjoiNjY5ZDYxN2M4ZWNhNGRmZmEzNDU2NTFhMTVmMjk1YTAiLCJwIjoiaiJ9">Create User<a/></td>
   </tr>
   <tr>
-    <td>Edit User</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-18?atlOrigin=eyJpIjoiN2VjNjE0MTQwYjU4NDhiMmJlNjMzNTgxNTI5ZmJiNzIiLCJwIjoiaiJ9">Edit User<a/></td>
   </tr>
   <tr>
-    <td>Delete User</td>
+   <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-19?atlOrigin=eyJpIjoiMTZjNGFlNzdjMTkzNDE4ZmI4MzE5NTU5OWI4Yjc2NWUiLCJwIjoiaiJ9">Delete User<a/></td>
   </tr>
   <tr>
     <td rowspan="2">Nguyễn Đức Minh</td>
-    <td>User Login</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-14?atlOrigin=eyJpIjoiZmM5OWM2ZDc1MzViNDZiNmJlZGZiNGM1YzM0MGFhMTAiLCJwIjoiaiJ9">User Login<a/></td>
   </tr>
   <tr>
-    <td>User Logout</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-15?atlOrigin=eyJpIjoiMDY0ZDE0ZWI5YjRlNGE2NThhNGYzMGFmOTBlMDFhNGQiLCJwIjoiaiJ9">User Logout<a/></td>
   </tr>
   <tr>
     <td rowspan="3">Võ Tấn Tài</td>
-    <td>Create Customer</td>
+   <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-21?atlOrigin=eyJpIjoiZGEwMmQ1ZjEwODU3NDY3NTgzZmYzNGI0ODBjNWQ4MGYiLCJwIjoiaiJ9">Create Customer<a/></td>
   </tr>
   <tr>
-    <td>Edit Customer</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-22?atlOrigin=eyJpIjoiNzMyM2IzZmY2M2NkNDEyNWI3MDdiZDY3NjU4YTFiODYiLCJwIjoiaiJ9">Edit Customer<a/></td>
   </tr>
   <tr>
-    <td>Delete Customer</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-23?atlOrigin=eyJpIjoiYzcxMGI1YWI5YTQzNDIwNDgzOGE2NTg5NzY5ZmZmNWQiLCJwIjoiaiJ9">Delete Customer<a/></td>
   </tr>
   <tr>
     <td>Nguyễn Quốc Thịnh</td>
-    <td>View Home Page</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-39?atlOrigin=eyJpIjoiNDMyYTIzZmQyZmZmNDZlNTgyYzJjYzMzNzljNGE0ODciLCJwIjoiaiJ9">View Home Page<a/></td>
   </tr>
 </table>
