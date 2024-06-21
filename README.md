@@ -130,3 +130,54 @@
         <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-86?atlOrigin=eyJpIjoiNTZmYmZmYzZjNjUzNDVkYzg3YTk2ZDM0NmQ2ZTJiYTgiLCJwIjoiaiJ9">Request Commitment Form for Lost Receipt<a/></td>
           <tr/>
 </table>
+
+<table>
+  <tr>
+    <th colspan="2">Sprint 1</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Đỗ Minh Hiếu</td>
+    <td>Register Customer Account</td>
+  </tr>
+  <tr>
+    <td>Edit Profile Customer</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Trần Thế Khang</td>
+    <td>Customer Login</td>
+  </tr>
+  <tr>
+    <td>Customer Logout</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Nguyễn Kiều Anh Quân</td>
+    <td>Create User</td>
+  </tr>
+  <tr>
+    <td>Edit User</td>
+  </tr>
+  <tr>
+    <td>Delete User</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Nguyễn Đức Minh</td>
+    <td>User Login</td>
+  </tr>
+  <tr>
+    <td>User Logout</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Võ Tấn Tài</td>
+    <td>Create Customer</td>
+  </tr>
+  <tr>
+    <td>Edit Customer</td>
+  </tr>
+  <tr>
+    <td>Delete Customer</td>
+  </tr>
+  <tr>
+    <td>Nguyễn Quốc Thịnh</td>
+    <td>View Home Page</td>
+  </tr>
+</table>
