@@ -131,6 +131,8 @@
           <tr/>
 </table>
 
+<br/>
+
 <table>
   <tr>
     <th colspan="2">Sprint 1</th>
