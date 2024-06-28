@@ -179,7 +179,10 @@
     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-23?atlOrigin=eyJpIjoiYzcxMGI1YWI5YTQzNDIwNDgzOGE2NTg5NzY5ZmZmNWQiLCJwIjoiaiJ9">Delete Customer<a/></td>
   </tr>
   <tr>
-    <td>Nguyễn Quốc Thịnh</td>
-     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-39?atlOrigin=eyJpIjoiNDMyYTIzZmQyZmZmNDZlNTgyYzJjYzMzNzljNGE0ODciLCJwIjoiaiJ9">View Home Page<a/></td>
+    <td rowspan="2">Nguyễn Quốc Thịnh</td>
+      <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
   </tr>
+      <tr>
+      <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
+    </tr>
 </table>
