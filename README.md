@@ -186,3 +186,60 @@
       <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
     </tr>
 </table>
+        
+<table>
+  <tr>
+    <th colspan="2">Sprint 2</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Đỗ Minh Hiếu</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-70?atlOrigin=eyJpIjoiYTc2ZGE4MWRkZTg4NDAwMDk2NWVmYzAxNDZjNzQ1OTUiLCJwIjoiaiJ9">Register Customer Account<a/></td>
+  </tr>
+  <tr>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-83?atlOrigin=eyJpIjoiMDM2ZTAwMWE5NjQ1NGZkMjhmZmQ4YWNiNzZjY2NlODMiLCJwIjoiaiJ9">Edit Profile Customer<a/></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Trần Thế Khang</td>
+        <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-35?atlOrigin=eyJpIjoiZjExOGU4MGJiMGNlNDIxZjg2ZTg5M2I4NjJlZmY1MDAiLCJwIjoiaiJ9">Create Diamond Certificate<a/></td>
+  </tr>
+  <tr>
+        <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-36?atlOrigin=eyJpIjoiMzg4ZWExMzQ5NWNkNDk5YWJlOGI3Y2Y0YzU4YmU3MDIiLCJwIjoiaiJ9">Edit Diamond Certificate<a/></td>
+  </tr>
+  <tr>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-38?atlOrigin=eyJpIjoiNzcyMjI4NDA1N2QzNDg3MTlhY2E0ZTM5OGU4YzkzNzIiLCJwIjoiaiJ9">Delete Diamond Certificate<a/></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Nguyễn Kiều Anh Quân</td>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-17?atlOrigin=eyJpIjoiNjY5ZDYxN2M4ZWNhNGRmZmEzNDU2NTFhMTVmMjk1YTAiLCJwIjoiaiJ9">Create User<a/></td>
+  </tr>
+  <tr>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-18?atlOrigin=eyJpIjoiN2VjNjE0MTQwYjU4NDhiMmJlNjMzNTgxNTI5ZmJiNzIiLCJwIjoiaiJ9">Edit User<a/></td>
+  </tr>
+  <tr>
+   <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-19?atlOrigin=eyJpIjoiMTZjNGFlNzdjMTkzNDE4ZmI4MzE5NTU5OWI4Yjc2NWUiLCJwIjoiaiJ9">Delete User<a/></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Nguyễn Đức Minh</td>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-14?atlOrigin=eyJpIjoiZmM5OWM2ZDc1MzViNDZiNmJlZGZiNGM1YzM0MGFhMTAiLCJwIjoiaiJ9">User Login<a/></td>
+  </tr>
+  <tr>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-15?atlOrigin=eyJpIjoiMDY0ZDE0ZWI5YjRlNGE2NThhNGYzMGFmOTBlMDFhNGQiLCJwIjoiaiJ9">User Logout<a/></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Võ Tấn Tài</td>
+   <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-21?atlOrigin=eyJpIjoiZGEwMmQ1ZjEwODU3NDY3NTgzZmYzNGI0ODBjNWQ4MGYiLCJwIjoiaiJ9">Create Customer<a/></td>
+  </tr>
+  <tr>
+     <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-22?atlOrigin=eyJpIjoiNzMyM2IzZmY2M2NkNDEyNWI3MDdiZDY3NjU4YTFiODYiLCJwIjoiaiJ9">Edit Customer<a/></td>
+  </tr>
+  <tr>
+    <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-23?atlOrigin=eyJpIjoiYzcxMGI1YWI5YTQzNDIwNDgzOGE2NTg5NzY5ZmZmNWQiLCJwIjoiaiJ9">Delete Customer<a/></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Nguyễn Quốc Thịnh</td>
+      <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-26?atlOrigin=eyJpIjoiOTY4YzRhZDRkYThlNDcxNDliZTMyN2RmMWIxOWYyNzAiLCJwIjoiaiJ9">Edit Service<a/></td>
+  </tr>
+      <tr>
+      <td><a href="https://quannkase173514.atlassian.net/browse/N5NJS1806-25?atlOrigin=eyJpIjoiMzIwZjY4ZGVlNGQzNDk1Y2E4Y2IxNzA0YWZlYWFkZmQiLCJwIjoiaiJ9">Create Service<a/></td>
+    </tr>
+</table>
