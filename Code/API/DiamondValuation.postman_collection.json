@@ -1,0 +1,1483 @@
+{
+	"info": {
+		"_postman_id": "aaf8d566-259e-41eb-9328-2651632375e7",
+		"name": "DiamondValuation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31859818"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "AddNewUser",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1ef12c13-9eb8-4860-9939-48bfa728a150",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "Doe",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "first_name",
+									"value": "John",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0123456788",
+									"type": "text"
+								},
+								{
+									"key": "enabled",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "example123@example.com",
+									"type": "text"
+								},
+								{
+									"key": "roles",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/users/user/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"users",
+								"user",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://admin-diamond-2f1928a70f66.herokuapp.com/api/users/user/55",
+							"protocol": "https",
+							"host": [
+								"admin-diamond-2f1928a70f66",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"user",
+								"55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsersByPage",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/users/page/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"users",
+								"page",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserByid",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4OCxKb2huIERvZSIsImlzcyI6IkRpYW1vbmRWYWx1YXRpb24iLCJpYXQiOjE3MTY5OTMwODMsImV4cCI6MTcxNjk5NjY4Mywicm9sZXMiOiJhZG1pbiJ9.oLPVNr_ekSzK7E7W3zE5Ewx2-6dAHfEUL5iAEwR0rTjy9YgN5epnRZ4qlPeazBLybfrnsCuouUhzpiYRo_NV7A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/users/delete/80",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"users",
+								"delete",
+								"80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorization",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMSxkdWNtNDU2Nzg5NzZAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcxNjUzMjIyNSwiZXhwIjoxNzE2NTM1ODI1LCJyb2xlIjpbeyJpZCI6MSwibmFtZSI6ImFkbWluIiwiZGVzY3JpcHRpb24iOiJhYmFkZmEifSx7ImlkIjoyLCJuYW1lIjoibWFuYWdlciIsImRlc2NyaXB0aW9uIjoiYXNkZmFzZiJ9XX0.rt1gyKU8jDLozy0wIUymY1b--HNwkzxHS4rxz63Uwer04Ovi02Sx4avPluUQA0ncbe_XYFvYToCMGalsC6G3Fw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJKb2huIERvZSwgYWRtaW4vbWFuYWdlciIsImlzcyI6IkRpYW1vbmRWYWx1YXRpb24iLCJpYXQiOjE3MTY0NjU0MzYsImV4cCI6MTcxNjQ2OTAzNiwicm9sZSI6W3siaWQiOjEsIm5hbWUiOiJhZG1pbiIsImRlc2NyaXB0aW9uIjoiYWJhZGZhIn0seyJpZCI6MiwibmFtZSI6Im1hbmFnZXIiLCJkZXNjcmlwdGlvbiI6ImFzZGZhc2YifV19._iH8umsfmkMkAEMKE-ZbyBANIMWR_B5VDamU6HNFeFTH7Lnw-Q3q3PHi8WQUgP34DrFHlHsfnr_zBZ6tkcoT7Q",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/auth/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "getAllRoles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/users/user/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"users",
+								"user",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "AddNewCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "minh1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Minh",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Danny",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0988306004",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Sai gon",
+									"type": "text"
+								},
+								{
+									"key": "enabled",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/customers/customer/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"customers",
+								"customer",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomerById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/customers/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"customers",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/customers/customer/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"customers",
+								"customer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerByPage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/customers/page/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"customers",
+								"page",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "addNewService",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Diamond Valuation",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "This is Diamond Valuation Report",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1ef12c13-9eb8-4860-9939-48bfa728a150",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/services/service/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"services",
+								"service",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/services/all-services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"services",
+								"all-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getServiceById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/services/service/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"services",
+								"service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteServiceByid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/services/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"services",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DiamondRequest",
+			"item": [
+				{
+					"name": "addNewDiamondRequest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/request/save?customer_id=26&note=đã nhận kim cương&status=PROCESSING&service_ids=1&appointmentDate=2024-12-31&appointmentTime=05:00&payment_method=CASH&paid=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"request",
+								"save"
+							],
+							"query": [
+								{
+									"key": "customer_id",
+									"value": "26"
+								},
+								{
+									"key": "note",
+									"value": "đã nhận kim cương"
+								},
+								{
+									"key": "status",
+									"value": "PROCESSING"
+								},
+								{
+									"key": "service_ids",
+									"value": "1"
+								},
+								{
+									"key": "Id",
+									"value": "16",
+									"disabled": true
+								},
+								{
+									"key": "appointmentDate",
+									"value": "2024-12-31"
+								},
+								{
+									"key": "appointmentTime",
+									"value": "05:00"
+								},
+								{
+									"key": "payment_method",
+									"value": "CASH"
+								},
+								{
+									"key": "paid",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRequestById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/request/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"request",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRequestById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/delete/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"delete",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRequest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/all-request",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"all-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRequestByCustomerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/customer/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"customer",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRequestPerDate",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getSlotAvailable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/diamond-requests/request/slot-available?date=2024-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"diamond-requests",
+								"request",
+								"slot-available"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Certificate",
+			"item": [
+				{
+					"name": "addNewCertificate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "GIA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "D",
+									"type": "text"
+								},
+								{
+									"key": "make",
+									"value": "Excellent",
+									"type": "text"
+								},
+								{
+									"key": "cut",
+									"value": "Round",
+									"type": "text"
+								},
+								{
+									"key": "clarity",
+									"value": "SI2",
+									"type": "text"
+								},
+								{
+									"key": "flourescence",
+									"value": "None",
+									"type": "text"
+								},
+								{
+									"key": "polish",
+									"value": "Excellent",
+									"type": "text"
+								},
+								{
+									"key": "symmetry",
+									"value": "Excellent",
+									"type": "text"
+								},
+								{
+									"key": "request_id",
+									"value": "19",
+									"type": "text"
+								},
+								{
+									"key": "carat",
+									"value": "0.6",
+									"type": "text"
+								},
+								{
+									"key": "measurement",
+									"value": "2x2x2",
+									"type": "text"
+								},
+								{
+									"key": "Authorization",
+									"value": "123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "postman-cloud:///1ef12c13-9eb8-4860-9939-48bfa728a150"
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "SH-fbb8a645ec84",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/certificates/certificate/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"certificates",
+								"certificate",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCertificateById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/certificates/certificate/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"certificates",
+								"certificate",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCertificateById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/certificates/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"certificates",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCertificate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/certificates/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"certificates",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"john123@gmail.com\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/auth/sign-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"408877677@gmail.com\",\r\n    \"password\": \"password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "form_key",
+									"value": "4ajsDhlrDuTLlBkI",
+									"type": "text"
+								},
+								{
+									"key": "shape",
+									"value": "708",
+									"type": "text"
+								},
+								{
+									"key": "cut",
+									"value": "Excellent",
+									"type": "text"
+								},
+								{
+									"key": "carat",
+									"value": "0,12",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "D",
+									"type": "text"
+								},
+								{
+									"key": "clarity",
+									"value": "FL",
+									"type": "text"
+								},
+								{
+									"key": "lab",
+									"value": "IGI",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://antwerpdiamonds.direct/en/cms_widgets/diamondprice/index",
+							"protocol": "https",
+							"host": [
+								"antwerpdiamonds",
+								"direct"
+							],
+							"path": [
+								"en",
+								"cms_widgets",
+								"diamondprice",
+								"index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rapaport",
+			"item": [
+				{
+					"name": "addAtribute",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clarity\":\"IF\",\r\n    \"color\":\"D\",\r\n    \"number\":\"0.8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/attribute/add/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"attribute",
+								"add",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clarity\":\"IF\",\r\n    \"color\":\"D\",\r\n    \"number\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/attribute/update/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"attribute",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/attribute/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"attribute",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAttribute",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/attribute/carat/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"attribute",
+								"carat",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCarat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"begin_carat\":0.5,\r\n    \"end_carat\":0.8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/carat/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"carat",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCaratById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/carat/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"carat",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCarat",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"begin_carat\":0.5,\r\n    \"end_carat\":0.9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/carat/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"carat",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/carat/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"carat",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRapaPort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/attribute/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"attribute",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "addReport",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzLEpvaG4gRG9lIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcyMDU1NjA4NiwiZXhwIjoxNzIwNTU2MTQ2LCJyb2xlcyI6ImFkbWluIn0.Q3EQR9swszmWRzhVv3Bd8orffHlXHi3NSJv6FYOso0C1R7eGJWzfsexdLgeI54zbUw3ho3ei3rRX72feWp0B6Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\" : \"abcdefg\",\r\n    \"header\" : \"aaaaaaa\",\r\n    \"type\" : \"BLOCKDIAMOND\",\r\n    \"status\" : \"WAIT\",\r\n    \"request_id\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/reports/report/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"reports",
+								"report",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/reports/report/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"reports",
+								"report",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/api/reports/all-report",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"api",
+								"reports",
+								"all-report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RequestTracking",
+			"item": [
+				{
+					"name": "getReportTrackingByReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/report-track/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"report-track",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SlotTime",
+			"item": [
+				{
+					"name": "AddNewSlotTime",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"time\" : \"8:00 - 9:00\",\r\n    \"number\" : 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Diamond/slot-times/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"slot-times",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Diamond/slot-times/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Diamond",
+								"slot-times",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

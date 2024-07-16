@@ -1,0 +1,624 @@
+{
+	"info": {
+		"_postman_id": "cbacf68b-2645-4959-b389-88d9c3ab6c6d",
+		"name": "DiamondValuationShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31859818"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is not null\", function () {\r",
+									"  pm.expect(pm.response.text()).to.not.equal('null');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains username\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include('\"username\": \"abcddd\"');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ducm40877@gmail.com\",\r\n  \"password\": \"password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"ducm40877@gmail.com\",\r\n    \"password\" : \"password123\",\r\n    \"first_name\" : \"Minh\",\r\n    \"last_name\" : \"Nguyen\",\r\n    \"location\" : \"Ho Chi Minh\",\r\n    \"phone_number\" : \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-gg",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/google/token?code=4/0ATx3LY4qjv-FnOynAMUeyHggy0QUX4pOj-vo5uqK_YoJyvKnQfT-eWBsE-pE47TA9V_Hyw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"google",
+								"token"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "4/0ATx3LY4qjv-FnOynAMUeyHggy0QUX4pOj-vo5uqK_YoJyvKnQfT-eWBsE-pE47TA9V_Hyw"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/pay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificate-code",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "4/0ATx3LY4y7P1sp7TJUVorKMs5b2N0EkpntrW7Bljm9jtLhtkytfE1d6vovZg9x3axdL23Sg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/auth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TokenValidate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer undefined",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNixkdWNtNDA4NzdAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcxOTk5MjMyOSwiZXhwIjoxNzE5OTkyMzg5fQ.El823AMZvpJb5s9UaqwpbYzQE9VhrfXBVjznF8k1KR-AbVs48xMG-bw79EOFJXa-4_CQOwk3_cu7jD3-0yFJNw",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshToken",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/token/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ducm40877@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/forgot_password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "WgIiJl9ImSChWY516x99l8dj0PCVrm",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "executepayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNixkdWNtNDA4NzdAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcyMDExMjg2OSwiZXhwIjoxNzIwMTEyOTI5fQ.ynvW4R7X2rusWgRaFa9I7hSqymWul2Z4xW4GG9Z3Z468AeHr9ICCucs_W5j-I5spLQvZkGKI5rNxzaM_3P_y8A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method\": \"CASH\",\r\n    \"service_name\": [\"Valuation\"],\r\n    \"date\" : \"2020-12-23\",\r\n    \"note\": \"dat hang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/pay/validate?paymentId=PAYID-M2DPRCI0TM64960MY601113V&PayerID=DYY97VM2XKGJ8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"pay",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "paymentId",
+									"value": "PAYID-M2DPRCI0TM64960MY601113V"
+								},
+								{
+									"key": "PayerID",
+									"value": "DYY97VM2XKGJ8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNixkdWNtNDA4NzdAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcyMDEwOTkxNSwiZXhwIjoxNzIwMTA5OTc1fQ.RdKhUd5Ab5TRY0jPul-8u7r4l0CDflMICxEi0J1yIn-GTgjsW61obGVRx8uLekKYvt3ptsKwbehNhNLG1Om_8A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method\": \"CASH\",\r\n    \"service_name\": [\"Valuation\"],\r\n    \"date\" : \"2020-12-23\",\r\n    \"note\": \"dat hang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/check-out",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pay",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/api/pay?total=400",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"api",
+								"pay"
+							],
+							"query": [
+								{
+									"key": "total",
+									"value": "400"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNixkdWNtNDA4NzdAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcyMDEwODM4OSwiZXhwIjoxNzIwMTA4NDQ5fQ.bm4cG4ZfNKA1Y4GcCZnp6pEfEX6lR-4Ue56aIJp2wZPOYCQpVya2xBbBQxnn-2GkSHTGjS9L_2cRZmaITDdO2g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/customer/information",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"customer",
+								"information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInformation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 5,\r\n    \"email\" : \"minh0@gmail.com\",\r\n    \"first_name\" : \"Hoa\",\r\n    \"last_name\" : \"My\",\r\n    \"location\" : \"HY\",\r\n    \"phone_number\" : \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-shop/customer/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-shop",
+								"customer",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "getAllService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/services/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"services",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DiamondRequest",
+			"item": [
+				{
+					"name": "getAllRequest",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNixkdWNtNDA4NzdAZ21haWwuY29tIiwiaXNzIjoiRGlhbW9uZFZhbHVhdGlvbiIsImlhdCI6MTcyMDQyMDM0NCwiZXhwIjoxNzIwNDIwNDA0fQ.07LaIQTD_7ZLsZlqwIRsDWCK6cE6oahkBJt-SmGk8jEiHp_iJCWc9Cyc1CzIx-wZBVjbHaKkmu_qfBQoMse9dA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-request/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-request",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Certificate",
+			"item": [
+				{
+					"name": "getCertificateById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-certificate/certificate/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-certificate",
+								"certificate",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCertificateByCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/DiamondShop/diamond-certificate/certificate/code/SH-deebcf66887d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"DiamondShop",
+								"diamond-certificate",
+								"certificate",
+								"code",
+								"SH-deebcf66887d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
