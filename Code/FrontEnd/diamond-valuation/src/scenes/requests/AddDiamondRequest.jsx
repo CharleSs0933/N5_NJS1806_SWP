@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  getCustomersPerPage,
   getAllServices,
   saveRequest,
+  searchCustomerByKeyword,
+  getSlotAvailable,
 } from "../../components/utils/ApiFunctions";
 import {
   Box,
@@ -28,17 +29,10 @@ const AddDiamondRequest = () => {
   const [services, setServices] = useState([]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
+  const [slots, setSlots] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getCustomersPerPage(1, "")
-      .then((data) => {
-        setCustomers(data.list_customers);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-
     getAllServices()
       .then((data) => {
         setServices(data);
@@ -48,11 +42,35 @@ const AddDiamondRequest = () => {
       });
   }, []);
 
+  function debounce(func, timeout = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, timeout);
+    };
+  }
+
+  const processChange = debounce((e) => getCustomerByKeyWord(e));
+
+  const getCustomerByKeyWord = async (e) => {
+    const keyword = e.target.value;
+    if (!keyword) {
+      setCustomers([]); // Clear customers if keyword is empty
+      return;
+    }
+    const response = await searchCustomerByKeyword(keyword);
+    setCustomers(response);
+  };
+
   const validationSchema = Yup.object().shape({
     customer_id: Yup.string().required("Customer is required"),
     note: Yup.string(),
     status: Yup.string().required("Status is required"),
     service_ids: Yup.array().min(1, "At least one service must be selected"),
+    payment_method: Yup.string().required("Payment method is required"),
+    paid: Yup.boolean().required("Paid status is required"),
   });
 
   const initialValues = {
@@ -61,10 +79,15 @@ const AddDiamondRequest = () => {
     note: "",
     status: "NEW",
     service_ids: [],
+    payment_method: "CASH",
+    paid: false,
+    appointment_date: "",
+    slotId: "",
   };
 
   const handleSubmit = async (values) => {
     try {
+      console.log(values);
       const result = await saveRequest(values);
       if (result.message !== undefined) {
         localStorage.setItem("successMessage", "Add new Request successfully");
@@ -78,6 +101,18 @@ const AddDiamondRequest = () => {
     setTimeout(() => {
       setError(null);
     }, 3000);
+  };
+
+  const handleDateChange = async (event, setFieldValue) => {
+    const date = event.target.value;
+    setFieldValue("appointment_date", date);
+
+    try {
+      const availableSlots = await getSlotAvailable(date);
+      setSlots(availableSlots);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -128,18 +163,21 @@ const AddDiamondRequest = () => {
                   <Autocomplete
                     options={customers}
                     getOptionLabel={(option) =>
-                      `${option.first_name} ${option.last_name} - ${option.phone_number}`
+                      `${option.first_name} ${option.last_name} - ${option.phone_number} - ${option.email}`
                     }
                     isOptionEqualToValue={(option, value) =>
                       option.id === value.id
                     }
+                    onInputChange={(event) => {
+                      processChange(event);
+                    }}
                     onChange={(event, value) => {
                       setFieldValue("customer_id", value ? value.id : "");
                     }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label="Customer Phone"
+                        label="Customer"
                         variant="outlined"
                         error={
                           touched.customer_id && Boolean(errors.customer_id)
@@ -166,7 +204,6 @@ const AddDiamondRequest = () => {
                 <FormControl fullWidth>
                   <InputLabel>Status</InputLabel>
                   <Field as={Select} name="status" label="Status">
-                    <MenuItem value="">All</MenuItem>
                     <MenuItem value="WAIT">WAIT</MenuItem>
                     <MenuItem value="NEW">NEW</MenuItem>
                     <MenuItem value="PROCESSING">PROCESSING</MenuItem>
@@ -185,7 +222,6 @@ const AddDiamondRequest = () => {
                     key={service.id}
                     control={
                       <Checkbox
-                        checked={values.service_ids.includes(service.id)}
                         onChange={(event) => {
                           if (event.target.checked) {
                             setFieldValue("service_ids", [
@@ -202,6 +238,7 @@ const AddDiamondRequest = () => {
                           }
                         }}
                         value={service.id}
+                        name="service_ids"
                       />
                     }
                     label={service.name}
@@ -212,6 +249,67 @@ const AddDiamondRequest = () => {
                   <div style={{ color: "red", gridColumn: "span 4" }}>
                     {errors.service_ids}
                   </div>
+                )}
+
+                <FormControl fullWidth sx={{ gridColumn: "span 2" }}>
+                  <InputLabel>Payment Method</InputLabel>
+                  <Field
+                    as={Select}
+                    name="payment_method"
+                    label="Payment Method"
+                  >
+                    <MenuItem value="CASH">CASH</MenuItem>
+                    <MenuItem value="PAYPAL">PAYPAL</MenuItem>
+                  </Field>
+                  {touched.payment_method && errors.payment_method && (
+                    <div style={{ color: "red" }}>{errors.payment_method}</div>
+                  )}
+                </FormControl>
+
+                <FormControl fullWidth sx={{ gridColumn: "span 2" }}>
+                  <InputLabel>Paid</InputLabel>
+                  <Field as={Select} name="paid" label="Paid">
+                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={false}>No</MenuItem>
+                  </Field>
+                  {touched.paid && errors.paid && (
+                    <div style={{ color: "red" }}>{errors.paid}</div>
+                  )}
+                </FormControl>
+
+                <TextField
+                  fullWidth
+                  type="date"
+                  margin="dense"
+                  label="Appointment Date"
+                  name="appointment_date"
+                  value={values.appointment_date}
+                  onChange={(event) => handleDateChange(event, setFieldValue)}
+                  onBlur={handleBlur}
+                  error={
+                    touched.appointment_date && Boolean(errors.appointment_date)
+                  }
+                  helperText={
+                    touched.appointment_date && errors.appointment_date
+                  }
+                  sx={{ gridColumn: "span 2" }}
+                  InputLabelProps={{ shrink: true }}
+                />
+
+                {slots.length > 0 && (
+                  <FormControl fullWidth sx={{ gridColumn: "span 2" }}>
+                    <InputLabel>Slot Time</InputLabel>
+                    <Field as={Select} name="slotId" label="Slot Time">
+                      {slots.map((slot) => (
+                        <MenuItem key={slot.id} value={slot.id}>
+                          {slot.time}
+                        </MenuItem>
+                      ))}
+                    </Field>
+                    {touched.slotId && errors.slotId && (
+                      <div style={{ color: "red" }}>{errors.slotId}</div>
+                    )}
+                  </FormControl>
                 )}
               </Box>
               <Box display="flex" justifyContent="center" mt="20px" gap="10px">

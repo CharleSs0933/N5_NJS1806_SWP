@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getRoles, saveUser } from "../../components/utils/ApiFunctions";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/auth/AuthProvider";
 
 export const AddUser = () => {
   const [user, setUser] = useState({
@@ -20,7 +21,7 @@ export const AddUser = () => {
 
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const auth = useAuth();
   useEffect(() => {
     const fetchRoles = async () => {
       try {
@@ -68,20 +69,29 @@ export const AddUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const result = await saveUser(user);
-      if (result.message !== undefined) {
-        localStorage.setItem("successMessage", "Add new User successfully");
-        navigate("/users");
-      } else {
-        setErrorMessage("Your email is invalid");
+    if (
+      auth.isRoleAccept("admin") !== null ||
+      auth.isRoleAccept("manager") !== null
+    ) {
+      try {
+        console.log(user);
+        const result = await saveUser(user);
+        if (result.message !== undefined) {
+          localStorage.setItem("successMessage", "Add new User successfully");
+          navigate("/users");
+        } else {
+          setErrorMessage("Your email is invalid");
+        }
+      } catch (error) {
+        setErrorMessage(error);
       }
-    } catch (error) {
-      setErrorMessage(error);
+    } else {
+      alert("you don't have permission to add new user");
     }
+
     setTimeout(() => {
       setErrorMessage("");
-    }, 3000);
+    }, 4000);
   };
 
   const handleCancelClick = () => {
@@ -93,7 +103,7 @@ export const AddUser = () => {
       <div>
         <h2 className="text-center">Manage Users</h2>
       </div>
-
+      {/* Your email is invalid */}
       <form
         onSubmit={(e) => handleSubmit(e)}
         style={{ maxWidth: "700px", margin: "0 auto" }}
@@ -196,13 +206,16 @@ export const AddUser = () => {
           </div>
 
           <div className="form-group row mt-3">
-            <label className="col-sm-4 col-form-label">Enabled:</label>
+            <label className="col-sm-4 col-form-label" htmlFor="enabled">
+              Enabled:
+            </label>
             <div className="col-sm-8 mt-2">
               <input
                 onChange={(e) => handleEnabledChange(e)}
                 type="checkbox"
                 id="enabled"
                 name="enabled"
+                checked={user.enabled}
               />
             </div>
           </div>
@@ -221,8 +234,10 @@ export const AddUser = () => {
                       name="role_ids"
                       className="m-2"
                     />
-                    <small>{role.name} </small> -{" "}
-                    <small>{role.description}</small>
+                    <label htmlFor={`role-${role.id}`}>
+                      <small>{role.name}</small> -{" "}
+                      <small>{role.description}</small>
+                    </label>
                     <br />
                   </div>
                 ))}
@@ -230,7 +245,9 @@ export const AddUser = () => {
           </div>
 
           <div className="form-group row mt-2">
-            <label className="col-sm-4 col-form-label">Photos:</label>
+            <label htmlFor="fileImage" className="col-sm-4 col-form-label">
+              Photos:
+            </label>
             <div className="col-sm-8">
               <input
                 type="file"
@@ -254,7 +271,12 @@ export const AddUser = () => {
           </div>
 
           <div className="text-center">
-            <input type="submit" value="Save" className="btn btn-primary m-3" />
+            <input
+              type="submit"
+              value="Save"
+              name="form"
+              className="btn btn-primary m-3"
+            />
             <input
               type="button"
               value="Cancel"

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
   getAllCertificates,
-  getAllRequests,
+  deleteCertificateById,
+  getAllRequestsStatus,
+  updateRequestStatus,
 } from "../../components/utils/ApiFunctions";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -32,11 +34,18 @@ import {
   Pagination,
   Paper,
   Alert,
+  Collapse,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RequestPageIcon from "@mui/icons-material/RequestPage";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import PrintIcon from "@mui/icons-material/Print";
+import { PiCertificate } from "react-icons/pi";
+import CertificateHTML from "./CertificateHTML";
+import PrintPDF from "./PrintPDF";
+import { useAuth } from "../../components/auth/AuthProvider";
 
 const Certificates = () => {
   const [certificates, setCertificates] = useState([]);
@@ -48,29 +57,95 @@ const Certificates = () => {
   const [error, setError] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [openRow, setOpenRow] = useState(null);
   const CertificatesPerPage = 6;
   const navigate = useNavigate();
+
+  const auth = useAuth();
+
+  // Check if the user is an admin or manager or valuation staff
+  const isAuthorized =
+    auth.isRoleAccept("admin") ||
+    auth.isRoleAccept("manager") ||
+    auth.isRoleAccept("valuationStaff");
 
   const [filters, setFilters] = useState({
     carat: [0, 10],
     clarity: "",
     color: "",
     cut: "",
-    fluorescence: "",
+    flourescence: "",
     make: "",
     polish: "",
     symmetry: "",
-    name: "",
+    cert: "",
   });
 
   const filterOptions = {
-    clarity: ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1"],
-    color: ["D", "E", "F", "G", "H", "I", "J", "K"],
-    cut: ["Excellent", "Very Good", "Good", "Fair", "Poor"],
-    fluorescence: ["None", "Faint", "Medium", "Strong", "Very Strong"],
-    make: ["Excellent", "Very Good", "Good", "Fair", "Poor"],
-    polish: ["Excellent", "Very Good", "Good", "Fair", "Poor"],
-    symmetry: ["Excellent", "Very Good", "Good", "Fair", "Poor"],
+    clarity: [
+      "",
+      "IF",
+      "VVS1",
+      "VVS2",
+      "VS1",
+      "VS2",
+      "SI1",
+      "SI2",
+      "SI3",
+      "I1",
+      "I2",
+      "I3",
+    ],
+    color: [
+      "",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+    ],
+    cut: [
+      "",
+      "Round",
+      "Marquise",
+      "Pear",
+      "Oval",
+      "Heart",
+      "Emerald",
+      "Princess",
+      "Radiant",
+      "Triangle",
+      "Baguette",
+      "Asscher",
+      "Cushion",
+    ],
+    flourescence: ["", "None", "Faint", "Medium", "Strong", "Very Strong"],
+    make: ["", "Ideal", "Excellent", "Very Good", "Good", "Fair", "Poor"],
+    polish: ["", "Excellent", "Very Good", "Good", "Fair", "Poor"],
+    symmetry: ["", "Excellent", "Very Good", "Good", "Fair", "Poor"],
+    cert: [
+      "",
+      "AGS",
+      "CEGL",
+      "CGI",
+      "CGL",
+      "DCLA",
+      "EGL Asia",
+      "EGL Intl.",
+      "EGL USA",
+      "GCAL",
+      "GIA",
+      "HRD",
+      "IGI",
+    ],
   };
 
   useEffect(() => {
@@ -85,33 +160,41 @@ const Certificates = () => {
   }, [location.state?.message]);
 
   useEffect(() => {
-    getAllCertificates()
-      .then((data) => {
-        if (data !== undefined) {
-          setCertificates(data);
+    const fetchCertificatesAndRequests = async () => {
+      try {
+        // Fetch certificates
+        const certificates = await getAllCertificates();
+        if (certificates !== undefined) {
+          setCertificates(certificates);
         }
-      })
-      .catch((error) => {
+
+        // Fetch requests status
+        const requests = await getAllRequestsStatus("NEW");
+        setRequests(requests);
+
+        // Clear error after a timeout
+        setTimeout(() => {
+          setError("");
+        }, 2000);
+      } catch (error) {
         setError(error.message);
-      });
-    getAllRequests()
-      .then((data) => {
-        setRequests(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching requests: ", error);
-      });
-    setTimeout(() => {
-      setError("");
-    }, 2000);
+        // Clear error after a timeout
+        setTimeout(() => {
+          setError("");
+        }, 2000);
+      }
+    };
+
+    fetchCertificatesAndRequests();
   }, []);
 
   const handleDelete = async () => {
-    const result = await deletecertificateById(certificateToDelete);
+    const result = await deleteCertificateById(certificateToDelete);
     if (result !== undefined) {
       setMessage(
         `Delete certificate with id ${certificateToDelete}  successfully!`
       );
+      updateRequestStatus(certificateToDelete.request_id, "NEW");
       getAllCertificates()
         .then((data) => {
           setCertificates(data);
@@ -163,16 +246,10 @@ const Certificates = () => {
     // setOpenRequestDialog(false);
   };
 
-  const handleCreateCertificate = () => {
+  const handleCreateCertificate = async () => {
     if (selectedRequest) {
-      createCertificateForRequest(selectedRequest.id)
-        .then((response) => {
-          // Handle success, navigate to certificate details or update state
-          console.log("Certificate created successfully:", response);
-        })
-        .catch((error) => {
-          console.error("Error creating certificate:", error);
-        });
+      updateRequestStatus(selectedRequest.id, "PROCESSING");
+      navigate(`/create-certificate/${selectedRequest.id}`, { replace: true });
     }
   };
 
@@ -182,17 +259,22 @@ const Certificates = () => {
         (certificate.carat >= filters.carat[0] &&
           certificate.carat <= filters.carat[1])) &&
       (filters.clarity === "" ||
-        certificate.clarity.includes(filters.clarity)) &&
-      (filters.color === "" || certificate.color.includes(filters.color)) &&
-      (filters.cut === "" || certificate.cut.includes(filters.cut)) &&
-      (filters.fluorescence === "" ||
-        certificate.fluorescence.includes(filters.fluorescence)) &&
-      (filters.make === "" || certificate.make.includes(filters.make)) &&
-      (filters.polish === "" || certificate.polish.includes(filters.polish)) &&
+        certificate.clarity.includes(filters.clarity.replace(/\s+/g, ""))) &&
+      (filters.color === "" ||
+        certificate.color.includes(filters.color.replace(/\s+/g, ""))) &&
+      (filters.cut === "" ||
+        certificate.cut.includes(filters.cut.replace(/\s+/g, ""))) &&
+      (filters.flourescence === "" ||
+        certificate.flourescence ===
+          filters.flourescence.replace(/\s+/g, "")) &&
+      (filters.make === "" ||
+        certificate.make === filters.make.replace(/\s+/g, "")) &&
+      (filters.polish === "" ||
+        certificate.polish === filters.polish.replace(/\s+/g, "")) &&
       (filters.symmetry === "" ||
-        certificate.symmetry.includes(filters.symmetry)) &&
-      (filters.name === "" ||
-        certificate.name.toLowerCase().includes(filters.name.toLowerCase()))
+        certificate.symmetry === filters.symmetry.replace(/\s+/g, "")) &&
+      (filters.cert === "" ||
+        certificate.cert.toLowerCase().includes(filters.cert.toLowerCase()))
     );
   });
 
@@ -205,21 +287,33 @@ const Certificates = () => {
 
   const newRequests = requests.filter((request) => request.status === "NEW");
 
+  const openCertificateInNewTab = (certificate) => {
+    const htmlContent = CertificateHTML(certificate);
+    const newWindow = window.open("", "_blank");
+    newWindow.document.open();
+    newWindow.document.write(htmlContent);
+    newWindow.document.close();
+  };
+
+  const handleRowClick = (id) => {
+    setOpenRow(openRow === id ? null : id); // Toggle the row open/close
+  };
+
   return (
     <Box p="20px" overflow="auto">
       <Typography variant="h4" textAlign="center">
         Manage Certificates
       </Typography>
-
-      <Badge
-        color="secondary"
-        badgeContent={newRequests.length}
-        onClick={handleBadgeClick}
-        sx={{ cursor: "pointer", fontSize: "40px", color: "black" }}
-      >
-        <RequestPageIcon />
-      </Badge>
-
+      {isAuthorized && (
+        <Badge
+          color="secondary"
+          badgeContent={newRequests.length}
+          onClick={handleBadgeClick}
+          sx={{ cursor: "pointer", fontSize: "40px", color: "black" }}
+        >
+          <RequestPageIcon />
+        </Badge>
+      )}
       {message && (
         <Alert severity="success" sx={{ mb: 2 }}>
           {message}
@@ -239,16 +333,20 @@ const Certificates = () => {
         alignItems="center"
         sx={{ mt: 2, mb: 2 }}
       >
-        <Typography gutterBottom>Carat Range</Typography>
-        <Slider
-          value={filters.carat}
-          onChange={handleCaratChange}
-          valueLabelDisplay="auto"
-          min={0}
-          max={10}
-          step={0.1}
-          sx={{ width: 200, mr: 2 }}
-        />
+        <Box>
+          <Typography gutterBottom paddingTop="10px">
+            Carat Range
+          </Typography>
+          <Slider
+            value={filters.carat}
+            onChange={handleCaratChange}
+            valueLabelDisplay="auto"
+            min={0}
+            max={10}
+            step={0.1}
+            sx={{ width: 200, mr: 2 }}
+          />
+        </Box>
 
         {Object.keys(filterOptions).map((filterKey) => (
           <FormControl key={filterKey} sx={{ minWidth: 120 }}>
@@ -261,7 +359,6 @@ const Certificates = () => {
               onChange={handleFilterChange}
               label={filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}
             >
-              <MenuItem value="">All</MenuItem>
               {filterOptions[filterKey].map((option) => (
                 <MenuItem key={option} value={option}>
                   {option}
@@ -276,7 +373,8 @@ const Certificates = () => {
         <Table sx={{ minWidth: 650 }}>
           <TableHead sx={{ backgroundColor: "#C5A773" }}>
             <TableRow>
-              <TableCell align="center">ID</TableCell>
+              <TableCell />
+              <TableCell align="center">Code</TableCell>
               <TableCell align="center">Carat</TableCell>
               <TableCell align="center">Clarity</TableCell>
               <TableCell align="center">Color</TableCell>
@@ -285,6 +383,7 @@ const Certificates = () => {
               <TableCell align="center">Make</TableCell>
               <TableCell align="center">Polish</TableCell>
               <TableCell align="center">Symmetry</TableCell>
+              <TableCell align="center">Measurement</TableCell>
               <TableCell align="center">Cert</TableCell>
               <TableCell align="center">Actions</TableCell>
             </TableRow>
@@ -292,36 +391,133 @@ const Certificates = () => {
           <TableBody sx={{ backgroundColor: "#EEE5D6" }}>
             {currentCertificates.length > 0 ? (
               currentCertificates.map((certificate) => (
-                <TableRow key={certificate.id}>
-                  <TableCell align="center">{certificate.id}</TableCell>
-                  <TableCell align="center">{certificate.carat}</TableCell>
-                  <TableCell align="center">{certificate.clarity}</TableCell>
-                  <TableCell align="center">{certificate.color}</TableCell>
-                  <TableCell align="center">{certificate.cut}</TableCell>
-                  <TableCell align="center">
-                    {certificate.flourescence}
-                  </TableCell>
-                  <TableCell align="center">{certificate.make}</TableCell>
-                  <TableCell align="center">{certificate.polish}</TableCell>
-                  <TableCell align="center">{certificate.symmetry}</TableCell>
-                  <TableCell align="center">{certificate.name}</TableCell>
-                  <TableCell align="center">
-                    <IconButton
-                      onClick={() =>
-                        navigate(`/certificates/${certificate.id}`)
-                      }
-                    >
-                      <EditIcon sx={{ color: "#C5A773" }} />
-                    </IconButton>
-                    <IconButton onClick={() => handleOpenDialog(certificate)}>
-                      <DeleteIcon sx={{ color: "#C5A773" }} />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
+                <React.Fragment key={certificate.id}>
+                  <TableRow>
+                    <TableCell align="center">
+                      <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() => handleRowClick(certificate.id)}
+                      >
+                        {openRow === certificate.id ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </IconButton>
+                    </TableCell>
+                    <TableCell align="center">{certificate.code}</TableCell>
+                    <TableCell align="center">{certificate.carat}</TableCell>
+                    <TableCell align="center">{certificate.clarity}</TableCell>
+                    <TableCell align="center">{certificate.color}</TableCell>
+                    <TableCell align="center">{certificate.cut}</TableCell>
+                    <TableCell align="center">
+                      {certificate.flourescence.replace(
+                        /([a-z])([A-Z])/g,
+                        "$1 $2"
+                      )}
+                    </TableCell>
+                    <TableCell align="center">
+                      {certificate.make.replace(/([a-z])([A-Z])/g, "$1 $2")}
+                    </TableCell>
+                    <TableCell align="center">
+                      {certificate.polish.replace(/([a-z])([A-Z])/g, "$1 $2")}
+                    </TableCell>
+                    <TableCell align="center">
+                      {certificate.symmetry.replace(/([a-z])([A-Z])/g, "$1 $2")}
+                    </TableCell>
+                    <TableCell align="center">
+                      {certificate.measurement}
+                    </TableCell>
+                    <TableCell align="center">{certificate.name}</TableCell>
+
+                    <TableCell align="center">
+                      <IconButton
+                        onClick={() => openCertificateInNewTab(certificate)}
+                      >
+                        <PiCertificate color="#C5A773" />
+                      </IconButton>
+                      {isAuthorized && (
+                        <IconButton
+                          onClick={() =>
+                            navigate(`/certificates/${certificate.id}`)
+                          }
+                        >
+                          <EditIcon sx={{ color: "#C5A773" }} />
+                        </IconButton>
+                      )}
+                      {isAuthorized && (
+                        <IconButton
+                          onClick={() => handleOpenDialog(certificate)}
+                        >
+                          <DeleteIcon sx={{ color: "#C5A773" }} />
+                        </IconButton>
+                      )}
+                      <IconButton onClick={() => PrintPDF(certificate)}>
+                        <PrintIcon sx={{ color: "#C5A773" }} />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell colSpan={13} sx={{ padding: 0 }}>
+                      <Collapse
+                        in={openRow === certificate.id}
+                        timeout="auto"
+                        unmountOnExit
+                      >
+                        <Box sx={{ m: 1 }}>
+                          <Typography variant="h6" gutterBottom component="div">
+                            Diamond Price
+                          </Typography>
+                          <Table size="small" aria-label="diamond price">
+                            <TableHead>
+                              <TableRow>
+                                <TableCell align="center">Min Price</TableCell>
+                                <TableCell align="center">Max Price</TableCell>
+                                <TableCell align="center">
+                                  RAP Percent
+                                </TableCell>
+                                <TableCell align="center">RAP Price</TableCell>
+                                <TableCell align="center">Real Price</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell align="center">
+                                  {certificate.min_price}
+                                </TableCell>
+                                <TableCell align="center">
+                                  {certificate.max_price}
+                                </TableCell>
+                                <TableCell
+                                  align="center"
+                                  sx={{
+                                    color:
+                                      certificate.rap_percent >= 0
+                                        ? "green"
+                                        : "red",
+                                  }}
+                                >
+                                  {certificate.rap_percent.toFixed(2)}%
+                                </TableCell>
+                                <TableCell align="center">
+                                  {certificate.rap_price}
+                                </TableCell>
+                                <TableCell align="center">
+                                  {certificate.real_price}
+                                </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </Box>
+                      </Collapse>
+                    </TableCell>
+                  </TableRow>
+                </React.Fragment>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={11} align="center">
+                <TableCell colSpan={13} align="center">
                   No certificates available.
                 </TableCell>
               </TableRow>
@@ -352,16 +548,29 @@ const Certificates = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDelete} color="secondary" autoFocus>
+          <Button
+            onClick={handleDelete}
+            color="secondary"
+            autoFocus
+            variant="contained"
+          >
             Delete
           </Button>
-          <Button onClick={handleCloseDialog} color="primary">
+          <Button
+            onClick={handleCloseDialog}
+            color="primary"
+            variant="contained"
+          >
             Cancel
           </Button>
         </DialogActions>
       </Dialog>
 
-      <Dialog open={openRequestDialog} onClose={() => setOpenDialog(false)}>
+      <Dialog
+        open={openRequestDialog}
+        onClose={() => setOpenDialog(false)}
+        variant="contained"
+      >
         <DialogTitle>Select Request</DialogTitle>
         <DialogContent>
           <DialogContentText>

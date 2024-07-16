@@ -3,12 +3,11 @@ import { useState } from "react";
 import {
   getRoles,
   getUserById,
-  saveUser,
+  updateUser,
 } from "../../components/utils/ApiFunctions";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const EditUser = () => {
-  const { userid } = useParams();
+const UpdateAccount = () => {
   const [user, setUser] = useState({
     id: "",
     email: "",
@@ -16,9 +15,7 @@ export const EditUser = () => {
     last_name: "",
     password: "",
     phone_number: "",
-    enabled: false,
     photo: null,
-    role_ids: [],
   });
 
   const [roles, setRoles] = useState([]);
@@ -26,47 +23,40 @@ export const EditUser = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
-    const fetchPage = async () => {
+    const fetchRoles = async () => {
       try {
-        const fetchRoles = async () => {
-          try {
-            const roles = await getRoles();
-            setRoles(roles);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-  
-        const fetchUser = async () => {
-          try {
-            const useredit = await getUserById(userid);
-            setUser({
-              id: useredit.id,
-              email: useredit.email,
-              first_name: useredit.first_name,
-              last_name: useredit.last_name,
-              password: "",
-              phone_number: useredit.phone_number,
-              enabled: useredit.enabled,
-              photo: useredit.photo,
-              role_ids: useredit.role_ids,
-            });
-            setImagePreview(useredit.photo);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-  
-        // Fetch user first, then fetch roles
-        await fetchUser();
-        await fetchRoles();
+        const roles = await getRoles();
+        setRoles(roles);
       } catch (error) {
         console.log(error);
       }
     };
-  
-    fetchPage();
-  }, [userid]);
+    fetchRoles();
+  }, []);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
+        const useredit = await getUserById(userId);
+        setUser({
+          id: useredit.id,
+          email: useredit.email,
+          first_name: useredit.first_name,
+          last_name: useredit.last_name,
+          password: "",
+          phone_number: useredit.phone_number,
+          enabled: useredit.enabled,
+          photo: useredit.photo,
+          role_ids: useredit.role_ids,
+        });
+        setImagePreview(useredit.photo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUser();
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -103,13 +93,9 @@ export const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await saveUser(user);
-      if (result.message !== undefined) {
-        localStorage.setItem(
-          "successMessage",
-          `Edit User ${user.id} successfully`
-        );
-        navigate(redirectUrl);
+      const result = await updateUser(user);
+      if (result.message !== null) {
+        window.location.reload();
       } else {
         setErrorMessage("Your email is invalid");
       }
@@ -235,44 +221,6 @@ export const EditUser = () => {
             </div>
           </div>
 
-          <div className="form-group row mt-3">
-            <label className="col-sm-4 col-form-label" htmlFor="enabled">
-              Enabled:
-            </label>
-            <div className="col-sm-8 mt-2">
-              <input
-                onChange={(e) => handleEnabledChange(e)}
-                type="checkbox"
-                id="enabled"
-                name="enabled"
-                checked={user.enabled}
-              />
-            </div>
-          </div>
-
-          <div className="form-group row">
-            <label className="col-sm-4 col-form-label">Roles:</label>
-            <div className="col-sm-8">
-              {roles &&
-                roles.map((role) => (
-                  <div key={role.id}>
-                    <input
-                      onChange={(e) => handleCheckboxChange(e)}
-                      type="checkbox"
-                      id={role.id}
-                      value={role.id}
-                      name="role_ids"
-                      className="m-2"
-                      checked={user.role_ids.includes(role.id + "")}
-                    />
-                    <small>{role.name} </small> -{" "}
-                    <small>{role.description}</small>
-                    <br />
-                  </div>
-                ))}
-            </div>
-          </div>
-
           <div className="form-group row mt-2">
             <label className="col-sm-4 col-form-label">Photos:</label>
             <div className="col-sm-8">
@@ -313,4 +261,4 @@ export const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default UpdateAccount;

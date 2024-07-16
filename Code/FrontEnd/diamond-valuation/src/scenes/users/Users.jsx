@@ -25,6 +25,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Alert,
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -35,6 +36,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Pagination from "@mui/material/Pagination";
 import SearchIcon from "@mui/icons-material/Search";
 import UserDetailsDialog from "./UserDetailsDialog";
+import { useAuth } from "../../components/auth/AuthProvider";
 
 export const Users = () => {
   const [data, setData] = useState({
@@ -52,6 +54,11 @@ export const Users = () => {
 
   const [openUserDetailDialog, setOpenUserDetailDialog] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+
+  // Authorized
+  const auth = useAuth();
+  const isAuthorized =
+    auth.isRoleAccept("admin") || auth.isRoleAccept("manager");
 
   const handleOpenDialog = (user) => {
     setUserToDelete(user);
@@ -102,7 +109,10 @@ export const Users = () => {
   const handleDelete = async () => {
     const result = await deleteUserById(userToDelete);
     if (result !== undefined) {
-      setMessage(`Delete user with id ${userToDelete}  successfully!`);
+      localStorage.setItem(
+        "successMessage",
+        `Delete User ${userToDelete} successfully`
+      );
       getUsersPerPage(currentPage, filteredData)
         .then((data) => {
           setData({
@@ -141,22 +151,47 @@ export const Users = () => {
     setCurrentPage(value);
   };
 
+  // const handleButtonAddUser = () => {
+  //   if (
+  //     auth.isRoleAccept("admin") !== null ||
+  //     auth.isRoleAccept("manager") !== null
+  //   ) {
+  //     navigate("/users/new");
+  //   } else {
+  //     alert("you don't have permission to add new user");
+  //   }
+  // };
+
   return (
     <Box m="20px" overflow="auto">
       <Typography variant="h4" textAlign="center">
         Manage Users
       </Typography>
 
+      {message && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          {message}
+        </Alert>
+      )}
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      )}
+
       <Box display="flex" justifyContent="space-between">
-        <Link to="/users/new">
-          <PersonAddAlt1Icon
-            sx={{
-              ml: "10px",
-              fontSize: "40px",
-              color: "black",
-            }}
-          />
-        </Link>
+        {isAuthorized && (
+          <Button onClick={() => navigate("/users/new")}>
+            <PersonAddAlt1Icon
+              sx={{
+                ml: "10px",
+                fontSize: "40px",
+                color: "black",
+              }}
+            />
+          </Button>
+        )}
         <Box
           display="flex"
           width="20%"
@@ -173,16 +208,11 @@ export const Users = () => {
         </Box>
       </Box>
 
-      {message && (
-        <div className="alert alert-success text-center">{message}</div>
-      )}
-
       <TableContainer component={Paper} sx={{ mt: 2 }}>
         <Table sx={{ minWidth: 650 }}>
           <TableHead sx={{ backgroundColor: "#C5A773" }}>
             <TableRow>
               <TableCell align="center">ID</TableCell>
-              <TableCell align="center">Photo</TableCell>
               <TableCell align="center">Email</TableCell>
               <TableCell align="center">Fullname</TableCell>
               <TableCell align="center">Phone Number</TableCell>
@@ -195,13 +225,6 @@ export const Users = () => {
             {data.list_users.map((user) => (
               <TableRow key={user.id}>
                 <TableCell align="center">{user.id}</TableCell>
-                <TableCell align="center">
-                  <img
-                    src={user.avatar}
-                    alt={user.first_name}
-                    style={{ width: 50, height: 50, borderRadius: "50%" }}
-                  />
-                </TableCell>
                 <TableCell align="center">{user.email}</TableCell>
                 <TableCell align="center">
                   {user.last_name} {user.first_name}
@@ -210,10 +233,10 @@ export const Users = () => {
                 <TableCell align="center">
                   {user.enabled ? (
                     <CheckCircleIcon
-                      sx={{ color: "green", fontSize: "35px" }}
+                      sx={{ color: "green", fontSize: "25px" }}
                     />
                   ) : (
-                    <CheckCircleOutlineIcon sx={{ fontSize: "35px" }} />
+                    <CheckCircleOutlineIcon sx={{ fontSize: "25px" }} />
                   )}
                 </TableCell>
                 <TableCell align="center">
@@ -236,9 +259,14 @@ export const Users = () => {
                   <IconButton onClick={() => navigate(`/users/${user.id}`)}>
                     <EditIcon sx={{ color: "#C5A773" }} />
                   </IconButton>
-                  <IconButton onClick={() => handleOpenDialog(user.id)}>
-                    <DeleteIcon sx={{ color: "#C5A773" }} />
-                  </IconButton>
+                  {isAuthorized && (
+                    <IconButton
+                      data-testid={`delete-button-${user.id}`}
+                      onClick={() => handleOpenDialog(user.id)}
+                    >
+                      <DeleteIcon sx={{ color: "#C5A773" }} />
+                    </IconButton>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
